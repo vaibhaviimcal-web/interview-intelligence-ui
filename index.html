@@ -1,218 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interview Intelligence</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
-</html>
-
-<!-- src/main.jsx -->
-<script type="module">
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  React.StrictMode.createElement(App)
-)
-</script>
-
-<!-- src/App.jsx -->
-<script type="module">
-import React, { useState } from 'react';
-import './App.css';
-
-function App() {
-  const [currentView, setCurrentView] = useState('landing');
-
-  return React.createElement('div', { className: 'app' },
-    React.createElement('header', { className: 'header' },
-      React.createElement('div', { className: 'container' },
-        React.createElement('h1', { 
-          className: 'logo', 
-          onClick: () => setCurrentView('landing'),
-          style: { cursor: 'pointer' }
-        }, 'Interview Intelligence')
-      )
-    ),
-    React.createElement('main', { className: 'main' },
-      React.createElement('div', { className: 'container' },
-        currentView === 'landing' && React.createElement('div', { className: 'hero' },
-          React.createElement('h2', { className: 'value-proposition' },
-            'Turn interviews into clear hiring decisions'
-          ),
-          React.createElement('button', { 
-            className: 'cta-button',
-            onClick: () => setCurrentView('upload')
-          }, 'Upload Interview')
-        ),
-        currentView === 'upload' && React.createElement('div', { className: 'upload-section' },
-          React.createElement('h2', { className: 'upload-title' }, 'Upload Interview'),
-          React.createElement('div', { className: 'upload-form' },
-            React.createElement('div', { className: 'form-group' },
-              React.createElement('label', { className: 'form-label' }, 'Interview Recording'),
-              React.createElement('div', { className: 'file-upload-area' },
-                React.createElement('input', { 
-                  type: 'file',
-                  id: 'file-input',
-                  className: 'file-input',
-                  accept: 'audio/*,video/*'
-                }),
-                React.createElement('label', { 
-                  htmlFor: 'file-input',
-                  className: 'file-upload-label'
-                },
-                  React.createElement('svg', { 
-                    className: 'upload-icon',
-                    fill: 'none',
-                    stroke: 'currentColor',
-                    viewBox: '0 0 24 24'
-                  },
-                    React.createElement('path', {
-                      strokeLinecap: 'round',
-                      strokeLinejoin: 'round',
-                      strokeWidth: 2,
-                      d: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'
-                    })
-                  ),
-                  React.createElement('span', { className: 'upload-text' }, 'Click to upload or drag and drop'),
-                  React.createElement('span', { className: 'upload-subtext' }, 'Audio or Video files')
-                )
-              )
-            ),
-            React.createElement('div', { className: 'form-group' },
-              React.createElement('label', { 
-                className: 'form-label',
-                htmlFor: 'candidate-name'
-              }, 'Candidate Name'),
-              React.createElement('input', {
-                type: 'text',
-                id: 'candidate-name',
-                className: 'form-input',
-                placeholder: 'Enter candidate name'
-              })
-            ),
-            React.createElement('div', { className: 'form-group' },
-              React.createElement('label', {
-                className: 'form-label',
-                htmlFor: 'role'
-              }, 'Role'),
-              React.createElement('select', {
-                id: 'role',
-                className: 'form-select'
-              },
-                React.createElement('option', { value: 'senior-software-engineer' }, 'Senior Software Engineer')
-              )
-            ),
-            React.createElement('button', {
-              className: 'submit-button',
-              onClick: () => setCurrentView('report')
-            }, 'Submit Interview')
-          )
-        ),
-        currentView === 'report' && React.createElement('div', { className: 'report-section' },
-          React.createElement('div', { className: 'report-header' },
-            React.createElement('h2', { className: 'report-title' }, 'Interview Report'),
-            React.createElement('button', {
-              className: 'back-button',
-              onClick: () => setCurrentView('landing')
-            }, '← Back to Home')
-          ),
-          React.createElement('div', { className: 'report-content' },
-            React.createElement('div', { className: 'report-card' },
-              React.createElement('h3', { className: 'card-title' }, 'Candidate Summary'),
-              React.createElement('div', { className: 'summary-info' },
-                React.createElement('div', { className: 'info-row' },
-                  React.createElement('span', { className: 'info-label' }, 'Name:'),
-                  React.createElement('span', { className: 'info-value' }, 'Sarah Johnson')
-                ),
-                React.createElement('div', { className: 'info-row' },
-                  React.createElement('span', { className: 'info-label' }, 'Role:'),
-                  React.createElement('span', { className: 'info-value' }, 'Senior Software Engineer')
-                ),
-                React.createElement('div', { className: 'info-row' },
-                  React.createElement('span', { className: 'info-label' }, 'Interview Date:'),
-                  React.createElement('span', { className: 'info-value' }, 'January 15, 2024')
-                ),
-                React.createElement('div', { className: 'info-row' },
-                  React.createElement('span', { className: 'info-label' }, 'Duration:'),
-                  React.createElement('span', { className: 'info-value' }, '45 minutes')
-                )
-              )
-            ),
-            React.createElement('div', { className: 'report-card' },
-              React.createElement('h3', { className: 'card-title' }, 'Strengths'),
-              React.createElement('ul', { className: 'bullet-list' },
-                React.createElement('li', null, 'Strong technical foundation in distributed systems and microservices architecture'),
-                React.createElement('li', null, 'Excellent communication skills with ability to explain complex concepts clearly'),
-                React.createElement('li', null, 'Demonstrated leadership experience managing teams of 5-8 engineers'),
-                React.createElement('li', null, 'Proactive problem-solving approach with focus on scalability'),
-                React.createElement('li', null, 'Deep knowledge of cloud infrastructure (AWS, Kubernetes)'),
-                React.createElement('li', null, 'Strong cultural fit with collaborative mindset')
-              )
-            ),
-            React.createElement('div', { className: 'report-card' },
-              React.createElement('h3', { className: 'card-title' }, 'Risks / Concerns'),
-              React.createElement('ul', { className: 'bullet-list risk-list' },
-                React.createElement('li', null, 'Limited experience with our specific tech stack (Go, GraphQL)'),
-                React.createElement('li', null, 'May require 2-3 months ramp-up time for domain knowledge'),
-                React.createElement('li', null, 'Expressed preference for remote work which may conflict with hybrid policy')
-              )
-            ),
-            React.createElement('div', { className: 'report-card' },
-              React.createElement('h3', { className: 'card-title' }, 'Decision Confidence Index'),
-              React.createElement('div', { className: 'confidence-container' },
-                React.createElement('div', { className: 'confidence-bar-bg' },
-                  React.createElement('div', { 
-                    className: 'confidence-bar-fill',
-                    style: { width: '85%' }
-                  })
-                ),
-                React.createElement('div', { className: 'confidence-score' }, '85/100')
-              ),
-              React.createElement('p', { className: 'confidence-description' },
-                'High confidence based on technical competency, cultural alignment, and leadership potential.'
-              )
-            ),
-            React.createElement('div', { className: 'report-card recommendation-card' },
-              React.createElement('h3', { className: 'card-title' }, 'Hiring Recommendation'),
-              React.createElement('div', { className: 'recommendation-badge strong-yes' }, 'Strong Yes'),
-              React.createElement('p', { className: 'recommendation-text' },
-                'Candidate demonstrates exceptional technical skills and leadership qualities that align well with the Senior Software Engineer role. While there are minor concerns about tech stack familiarity, the candidate\'s strong foundation and learning ability mitigate these risks. Recommend moving forward with offer.'
-              )
-            ),
-            React.createElement('div', { className: 'report-card' },
-              React.createElement('h3', { className: 'card-title' }, 'Follow-up Questions'),
-              React.createElement('ul', { className: 'bullet-list' },
-                React.createElement('li', null, 'Can you provide more details about your experience with event-driven architectures?'),
-                React.createElement('li', null, 'How would you approach migrating a monolithic application to microservices?'),
-                React.createElement('li', null, 'What\'s your experience with on-call rotations and incident management?'),
-                React.createElement('li', null, 'Are you open to working from the office 2-3 days per week?'),
-                React.createElement('li', null, 'Can you walk us through a time when you had to make a difficult technical trade-off decision?')
-              )
-            )
-          )
-        )
-      )
-    ),
-    React.createElement('footer', { className: 'footer' },
-      React.createElement('div', { className: 'container' },
-        React.createElement('p', null, '© 2024 Interview Intelligence. All rights reserved.')
-      )
-    )
-  );
-}
-
-export default App;
-</script>
-
-<style>
+    <style>
 * {
   margin: 0;
   padding: 0;
@@ -252,6 +44,7 @@ body {
   font-weight: 700;
   color: #1f2937;
   letter-spacing: -0.5px;
+  cursor: pointer;
 }
 
 .main {
@@ -592,16 +385,6 @@ body {
   color: #065f46;
 }
 
-.recommendation-badge.yes-with-risk {
-  background-color: #fef3c7;
-  color: #92400e;
-}
-
-.recommendation-badge.no {
-  background-color: #fee2e2;
-  color: #991b1b;
-}
-
 .recommendation-text {
   color: #374151;
   line-height: 1.7;
@@ -619,6 +402,10 @@ body {
   text-align: center;
   color: #6b7280;
   font-size: 14px;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -667,4 +454,190 @@ body {
     width: 100%;
   }
 }
-</style>
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    
+    <script>
+      // Simple vanilla JS implementation for GitHub Pages
+      const root = document.getElementById('root');
+      let currentView = 'landing';
+
+      function render() {
+        if (currentView === 'landing') {
+          root.innerHTML = `
+            <div class="app">
+              <header class="header">
+                <div class="container">
+                  <h1 class="logo" onclick="navigateTo('landing')">Interview Intelligence</h1>
+                </div>
+              </header>
+              <main class="main">
+                <div class="container">
+                  <div class="hero">
+                    <h2 class="value-proposition">Turn interviews into clear hiring decisions</h2>
+                    <button class="cta-button" onclick="navigateTo('upload')">Upload Interview</button>
+                  </div>
+                </div>
+              </main>
+              <footer class="footer">
+                <div class="container">
+                  <p>&copy; 2024 Interview Intelligence. All rights reserved.</p>
+                </div>
+              </footer>
+            </div>
+          `;
+        } else if (currentView === 'upload') {
+          root.innerHTML = `
+            <div class="app">
+              <header class="header">
+                <div class="container">
+                  <h1 class="logo" onclick="navigateTo('landing')">Interview Intelligence</h1>
+                </div>
+              </header>
+              <main class="main">
+                <div class="container">
+                  <div class="upload-section">
+                    <h2 class="upload-title">Upload Interview</h2>
+                    <div class="upload-form">
+                      <div class="form-group">
+                        <label class="form-label">Interview Recording</label>
+                        <div class="file-upload-area">
+                          <input type="file" id="file-input" class="file-input" accept="audio/*,video/*">
+                          <label for="file-input" class="file-upload-label">
+                            <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            </svg>
+                            <span class="upload-text">Click to upload or drag and drop</span>
+                            <span class="upload-subtext">Audio or Video files</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="candidate-name">Candidate Name</label>
+                        <input type="text" id="candidate-name" class="form-input" placeholder="Enter candidate name">
+                      </div>
+                      <div class="form-group">
+                        <label class="form-label" for="role">Role</label>
+                        <select id="role" class="form-select">
+                          <option value="senior-software-engineer">Senior Software Engineer</option>
+                        </select>
+                      </div>
+                      <button class="submit-button" onclick="navigateTo('report')">Submit Interview</button>
+                    </div>
+                  </div>
+                </div>
+              </main>
+              <footer class="footer">
+                <div class="container">
+                  <p>&copy; 2024 Interview Intelligence. All rights reserved.</p>
+                </div>
+              </footer>
+            </div>
+          `;
+        } else if (currentView === 'report') {
+          root.innerHTML = `
+            <div class="app">
+              <header class="header">
+                <div class="container">
+                  <h1 class="logo" onclick="navigateTo('landing')">Interview Intelligence</h1>
+                </div>
+              </header>
+              <main class="main">
+                <div class="container">
+                  <div class="report-section">
+                    <div class="report-header">
+                      <h2 class="report-title">Interview Report</h2>
+                      <button class="back-button" onclick="navigateTo('landing')">← Back to Home</button>
+                    </div>
+                    <div class="report-content">
+                      <div class="report-card">
+                        <h3 class="card-title">Candidate Summary</h3>
+                        <div class="summary-info">
+                          <div class="info-row">
+                            <span class="info-label">Name:</span>
+                            <span class="info-value">Sarah Johnson</span>
+                          </div>
+                          <div class="info-row">
+                            <span class="info-label">Role:</span>
+                            <span class="info-value">Senior Software Engineer</span>
+                          </div>
+                          <div class="info-row">
+                            <span class="info-label">Interview Date:</span>
+                            <span class="info-value">January 15, 2024</span>
+                          </div>
+                          <div class="info-row">
+                            <span class="info-label">Duration:</span>
+                            <span class="info-value">45 minutes</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="report-card">
+                        <h3 class="card-title">Strengths</h3>
+                        <ul class="bullet-list">
+                          <li>Strong technical foundation in distributed systems and microservices architecture</li>
+                          <li>Excellent communication skills with ability to explain complex concepts clearly</li>
+                          <li>Demonstrated leadership experience managing teams of 5-8 engineers</li>
+                          <li>Proactive problem-solving approach with focus on scalability</li>
+                          <li>Deep knowledge of cloud infrastructure (AWS, Kubernetes)</li>
+                          <li>Strong cultural fit with collaborative mindset</li>
+                        </ul>
+                      </div>
+                      <div class="report-card">
+                        <h3 class="card-title">Risks / Concerns</h3>
+                        <ul class="bullet-list risk-list">
+                          <li>Limited experience with our specific tech stack (Go, GraphQL)</li>
+                          <li>May require 2-3 months ramp-up time for domain knowledge</li>
+                          <li>Expressed preference for remote work which may conflict with hybrid policy</li>
+                        </ul>
+                      </div>
+                      <div class="report-card">
+                        <h3 class="card-title">Decision Confidence Index</h3>
+                        <div class="confidence-container">
+                          <div class="confidence-bar-bg">
+                            <div class="confidence-bar-fill" style="width: 85%"></div>
+                          </div>
+                          <div class="confidence-score">85/100</div>
+                        </div>
+                        <p class="confidence-description">High confidence based on technical competency, cultural alignment, and leadership potential.</p>
+                      </div>
+                      <div class="report-card recommendation-card">
+                        <h3 class="card-title">Hiring Recommendation</h3>
+                        <div class="recommendation-badge strong-yes">Strong Yes</div>
+                        <p class="recommendation-text">Candidate demonstrates exceptional technical skills and leadership qualities that align well with the Senior Software Engineer role. While there are minor concerns about tech stack familiarity, the candidate's strong foundation and learning ability mitigate these risks. Recommend moving forward with offer.</p>
+                      </div>
+                      <div class="report-card">
+                        <h3 class="card-title">Follow-up Questions</h3>
+                        <ul class="bullet-list">
+                          <li>Can you provide more details about your experience with event-driven architectures?</li>
+                          <li>How would you approach migrating a monolithic application to microservices?</li>
+                          <li>What's your experience with on-call rotations and incident management?</li>
+                          <li>Are you open to working from the office 2-3 days per week?</li>
+                          <li>Can you walk us through a time when you had to make a difficult technical trade-off decision?</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </main>
+              <footer class="footer">
+                <div class="container">
+                  <p>&copy; 2024 Interview Intelligence. All rights reserved.</p>
+                </div>
+              </footer>
+            </div>
+          `;
+        }
+      }
+
+      function navigateTo(view) {
+        currentView = view;
+        render();
+      }
+
+      // Initial render
+      render();
+    </script>
+  </body>
+</html>
