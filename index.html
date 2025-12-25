@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interview Intelligence</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+
+<!-- src/main.jsx -->
+<script type="module">
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  React.StrictMode.createElement(App)
+)
+</script>
+
+<!-- src/App.jsx -->
+<script type="module">
+import React, { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [currentView, setCurrentView] = useState('landing');
+
+  return React.createElement('div', { className: 'app' },
+    React.createElement('header', { className: 'header' },
+      React.createElement('div', { className: 'container' },
+        React.createElement('h1', { 
+          className: 'logo', 
+          onClick: () => setCurrentView('landing'),
+          style: { cursor: 'pointer' }
+        }, 'Interview Intelligence')
+      )
+    ),
+    React.createElement('main', { className: 'main' },
+      React.createElement('div', { className: 'container' },
+        currentView === 'landing' && React.createElement('div', { className: 'hero' },
+          React.createElement('h2', { className: 'value-proposition' },
+            'Turn interviews into clear hiring decisions'
+          ),
+          React.createElement('button', { 
+            className: 'cta-button',
+            onClick: () => setCurrentView('upload')
+          }, 'Upload Interview')
+        ),
+        currentView === 'upload' && React.createElement('div', { className: 'upload-section' },
+          React.createElement('h2', { className: 'upload-title' }, 'Upload Interview'),
+          React.createElement('div', { className: 'upload-form' },
+            React.createElement('div', { className: 'form-group' },
+              React.createElement('label', { className: 'form-label' }, 'Interview Recording'),
+              React.createElement('div', { className: 'file-upload-area' },
+                React.createElement('input', { 
+                  type: 'file',
+                  id: 'file-input',
+                  className: 'file-input',
+                  accept: 'audio/*,video/*'
+                }),
+                React.createElement('label', { 
+                  htmlFor: 'file-input',
+                  className: 'file-upload-label'
+                },
+                  React.createElement('svg', { 
+                    className: 'upload-icon',
+                    fill: 'none',
+                    stroke: 'currentColor',
+                    viewBox: '0 0 24 24'
+                  },
+                    React.createElement('path', {
+                      strokeLinecap: 'round',
+                      strokeLinejoin: 'round',
+                      strokeWidth: 2,
+                      d: 'M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'
+                    })
+                  ),
+                  React.createElement('span', { className: 'upload-text' }, 'Click to upload or drag and drop'),
+                  React.createElement('span', { className: 'upload-subtext' }, 'Audio or Video files')
+                )
+              )
+            ),
+            React.createElement('div', { className: 'form-group' },
+              React.createElement('label', { 
+                className: 'form-label',
+                htmlFor: 'candidate-name'
+              }, 'Candidate Name'),
+              React.createElement('input', {
+                type: 'text',
+                id: 'candidate-name',
+                className: 'form-input',
+                placeholder: 'Enter candidate name'
+              })
+            ),
+            React.createElement('div', { className: 'form-group' },
+              React.createElement('label', {
+                className: 'form-label',
+                htmlFor: 'role'
+              }, 'Role'),
+              React.createElement('select', {
+                id: 'role',
+                className: 'form-select'
+              },
+                React.createElement('option', { value: 'senior-software-engineer' }, 'Senior Software Engineer')
+              )
+            ),
+            React.createElement('button', {
+              className: 'submit-button',
+              onClick: () => setCurrentView('report')
+            }, 'Submit Interview')
+          )
+        ),
+        currentView === 'report' && React.createElement('div', { className: 'report-section' },
+          React.createElement('div', { className: 'report-header' },
+            React.createElement('h2', { className: 'report-title' }, 'Interview Report'),
+            React.createElement('button', {
+              className: 'back-button',
+              onClick: () => setCurrentView('landing')
+            }, '← Back to Home')
+          ),
+          React.createElement('div', { className: 'report-content' },
+            React.createElement('div', { className: 'report-card' },
+              React.createElement('h3', { className: 'card-title' }, 'Candidate Summary'),
+              React.createElement('div', { className: 'summary-info' },
+                React.createElement('div', { className: 'info-row' },
+                  React.createElement('span', { className: 'info-label' }, 'Name:'),
+                  React.createElement('span', { className: 'info-value' }, 'Sarah Johnson')
+                ),
+                React.createElement('div', { className: 'info-row' },
+                  React.createElement('span', { className: 'info-label' }, 'Role:'),
+                  React.createElement('span', { className: 'info-value' }, 'Senior Software Engineer')
+                ),
+                React.createElement('div', { className: 'info-row' },
+                  React.createElement('span', { className: 'info-label' }, 'Interview Date:'),
+                  React.createElement('span', { className: 'info-value' }, 'January 15, 2024')
+                ),
+                React.createElement('div', { className: 'info-row' },
+                  React.createElement('span', { className: 'info-label' }, 'Duration:'),
+                  React.createElement('span', { className: 'info-value' }, '45 minutes')
+                )
+              )
+            ),
+            React.createElement('div', { className: 'report-card' },
+              React.createElement('h3', { className: 'card-title' }, 'Strengths'),
+              React.createElement('ul', { className: 'bullet-list' },
+                React.createElement('li', null, 'Strong technical foundation in distributed systems and microservices architecture'),
+                React.createElement('li', null, 'Excellent communication skills with ability to explain complex concepts clearly'),
+                React.createElement('li', null, 'Demonstrated leadership experience managing teams of 5-8 engineers'),
+                React.createElement('li', null, 'Proactive problem-solving approach with focus on scalability'),
+                React.createElement('li', null, 'Deep knowledge of cloud infrastructure (AWS, Kubernetes)'),
+                React.createElement('li', null, 'Strong cultural fit with collaborative mindset')
+              )
+            ),
+            React.createElement('div', { className: 'report-card' },
+              React.createElement('h3', { className: 'card-title' }, 'Risks / Concerns'),
+              React.createElement('ul', { className: 'bullet-list risk-list' },
+                React.createElement('li', null, 'Limited experience with our specific tech stack (Go, GraphQL)'),
+                React.createElement('li', null, 'May require 2-3 months ramp-up time for domain knowledge'),
+                React.createElement('li', null, 'Expressed preference for remote work which may conflict with hybrid policy')
+              )
+            ),
+            React.createElement('div', { className: 'report-card' },
+              React.createElement('h3', { className: 'card-title' }, 'Decision Confidence Index'),
+              React.createElement('div', { className: 'confidence-container' },
+                React.createElement('div', { className: 'confidence-bar-bg' },
+                  React.createElement('div', { 
+                    className: 'confidence-bar-fill',
+                    style: { width: '85%' }
+                  })
+                ),
+                React.createElement('div', { className: 'confidence-score' }, '85/100')
+              ),
+              React.createElement('p', { className: 'confidence-description' },
+                'High confidence based on technical competency, cultural alignment, and leadership potential.'
+              )
+            ),
+            React.createElement('div', { className: 'report-card recommendation-card' },
+              React.createElement('h3', { className: 'card-title' }, 'Hiring Recommendation'),
+              React.createElement('div', { className: 'recommendation-badge strong-yes' }, 'Strong Yes'),
+              React.createElement('p', { className: 'recommendation-text' },
+                'Candidate demonstrates exceptional technical skills and leadership qualities that align well with the Senior Software Engineer role. While there are minor concerns about tech stack familiarity, the candidate\'s strong foundation and learning ability mitigate these risks. Recommend moving forward with offer.'
+              )
+            ),
+            React.createElement('div', { className: 'report-card' },
+              React.createElement('h3', { className: 'card-title' }, 'Follow-up Questions'),
+              React.createElement('ul', { className: 'bullet-list' },
+                React.createElement('li', null, 'Can you provide more details about your experience with event-driven architectures?'),
+                React.createElement('li', null, 'How would you approach migrating a monolithic application to microservices?'),
+                React.createElement('li', null, 'What\'s your experience with on-call rotations and incident management?'),
+                React.createElement('li', null, 'Are you open to working from the office 2-3 days per week?'),
+                React.createElement('li', null, 'Can you walk us through a time when you had to make a difficult technical trade-off decision?')
+              )
+            )
+          )
+        )
+      )
+    ),
+    React.createElement('footer', { className: 'footer' },
+      React.createElement('div', { className: 'container' },
+        React.createElement('p', null, '© 2024 Interview Intelligence. All rights reserved.')
+      )
+    )
+  );
+}
+
+export default App;
+</script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  letter-spacing: -0.5px;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.value-proposition {
+  font-size: 48px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  letter-spacing: -1px;
+}
+
+.cta-button {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+.cta-button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.upload-section {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.upload-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.upload-form {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.file-upload-area {
+  position: relative;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.file-upload-label:hover {
+  border-color: #2563eb;
+  background-color: #eff6ff;
+}
+
+.upload-icon {
+  width: 48px;
+  height: 48px;
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.upload-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.upload-subtext {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-select {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.submit-button {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.submit-button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.report-section {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.report-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.back-button {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #e5e7eb;
+}
+
+.report-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.report-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+.summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #6b7280;
+  min-width: 120px;
+}
+
+.info-value {
+  color: #111827;
+}
+
+.bullet-list {
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.bullet-list li:before {
+  content: "•";
+  position: absolute;
+  left: 8px;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+.risk-list li:before {
+  color: #dc2626;
+}
+
+.confidence-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.confidence-bar-bg {
+  flex: 1;
+  height: 32px;
+  background-color: #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.confidence-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  transition: width 0.3s ease;
+}
+
+.confidence-score {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  min-width: 80px;
+}
+
+.confidence-description {
+  color: #6b7280;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.recommendation-card {
+  border: 2px solid #10b981;
+}
+
+.recommendation-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.recommendation-badge.strong-yes {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.recommendation-badge.yes-with-risk {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.recommendation-badge.no {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.recommendation-text {
+  color: #374151;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 24px 0;
+  margin-top: auto;
+}
+
+.footer p {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .value-proposition {
+    font-size: 32px;
+    margin-bottom: 32px;
+  }
+
+  .cta-button {
+    font-size: 16px;
+    padding: 14px 36px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .upload-title {
+    font-size: 28px;
+  }
+
+  .upload-form {
+    padding: 24px;
+  }
+
+  .report-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .report-title {
+    font-size: 28px;
+  }
+
+  .report-card {
+    padding: 24px;
+  }
+
+  .confidence-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .confidence-bar-bg {
+    width: 100%;
+  }
+}
+</style>
